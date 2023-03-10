@@ -4,6 +4,13 @@
 # Tučné písmo, kurzíva, podtržení, změna fontu a velikosti písma
 # Export do PDF
 
+
+
+#požadované rozšíření:
+ pip install fpdf
+
+
+
 # TODO:
  vylepšit funkce bold, italic, underline, tak aby nebylo potřeba definovat všechny typy fontu v každé funkci
  
