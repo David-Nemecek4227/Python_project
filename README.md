@@ -6,7 +6,7 @@
 
 
 
-#požadované rozšíření:
+# Požadované rozšíření:
  pip install fpdf
 
 
