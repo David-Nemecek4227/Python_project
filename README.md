@@ -1,6 +1,8 @@
 # Python text editor
 
 # Program zvládá základní práci s textem, vytvoření nového souboru.txt, uložení, otevření, funkce undo/redo
+# Tučné písmo, kurzíva, podtržení, změna fontu a velikosti písma
+#export do PDF
 
 # TODO:
  Přidat klávesové zkratky pro funkce: open, save, new
