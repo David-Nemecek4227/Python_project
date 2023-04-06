@@ -1,14 +1,14 @@
 from functions import *
 
-
 # Create the GUI
 root = Tk()
 root.title("Untitled")
 root.geometry("540x500")
 
-#Set default font
+# Set default font
 my_font=font.Font(family="Helvetica", size="10")
 
+# Create frame
 my_frame = Frame(root, width=510, height=500)
 my_frame.pack(pady=10)
 my_frame.grid_propagate(False)
@@ -27,7 +27,6 @@ root.config(menu=menu_bar)
 # Add the File menu
 file_menu = Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="File", menu=file_menu)
-
 file_menu.add_command(label="New", command=lambda:new_file(text, root))
 file_menu.add_command(label="Open", command=lambda:open_file(text, root))
 file_menu.add_command(label="Save", command=lambda:save_file(text, root))
