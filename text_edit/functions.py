@@ -3,15 +3,14 @@ from tkinter.filedialog import asksaveasfilename, askopenfilename
 from tkinter import font
 from fpdf import FPDF
 
-
-
-# Define functions for file operations
+# Define new file function
 def new_file(text, root):
     # Clear the text area
     text.delete(1.0, END)
     # Update the file name
     root.title("Untitled")
 
+# Define save file function
 def save_file(text, root):
     # Open a dialog box to save the file
     file_path = asksaveasfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
@@ -24,6 +23,7 @@ def save_file(text, root):
     # Update the file name
     root.title(f"{file_path}")
 
+# Define open file function
 def open_file(text, root):
     # Open a dialog box to choose the file to open
     file_path = askopenfilename(filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
@@ -38,8 +38,9 @@ def open_file(text, root):
     # Update the file name
     root.title(f"{file_path}")
 
+# Define function to make text bold
 def make_bold(text):
-
+    # Define individual fonts for making text bold/italic/underline and combinations of them
     bold_italic_font=font.Font(text, text.cget("font"))
     bold_italic_font.configure(weight="bold",slant="italic")
     text.tag_configure("bold_italic", font=bold_italic_font)
@@ -61,6 +62,7 @@ def make_bold(text):
 
     text.tag_configure("bold", font=bold_font)
     current_tags = text.tag_names("sel.first")
+
     if "bold" in current_tags:
         text.tag_remove("bold", "sel.first", "sel.last")
     elif "italic" in current_tags:
@@ -89,7 +91,10 @@ def make_bold(text):
         text.tag_add("italic_underline", "sel.first", "sel.last")
     else:
         text.tag_add("bold", "sel.first", "sel.last")
+
+# Define function to make text italic        
 def make_italic(text):
+    # Define individual fonts for making text bold/italic/underline and combinations of them
     bold_italic_font=font.Font(text, text.cget("font"))
     bold_italic_font.configure(weight="bold",slant="italic")
     text.tag_configure("bold_italic", font=bold_italic_font)
@@ -111,6 +116,7 @@ def make_italic(text):
 
     text.tag_configure("italic", font=italic_font)
     current_tags = text.tag_names("sel.first")
+
     if "italic" in current_tags:
         text.tag_remove("italic", "sel.first", "sel.last")
     elif "bold" in current_tags:
@@ -140,8 +146,10 @@ def make_italic(text):
     else:
         # If the text is not italic, add the "italic" tag
         text.tag_add("italic", "sel.first", "sel.last")
-def make_underline(text):
 
+# Define function to make text underline
+def make_underline(text):
+    # Define individual fonts for making text bold/italic/underline and combinations of them
     bold_italic_font=font.Font(text, text.cget("font"))
     bold_italic_font.configure(weight="bold",slant="italic")
     text.tag_configure("bold_italic", font=bold_italic_font)
@@ -163,6 +171,7 @@ def make_underline(text):
 
     text.tag_configure("underline", font=underline_font)
     current_tags = text.tag_names("sel.first")
+    
     if "underline" in current_tags:
         # If the text is already underline, remove the "underline" tag
         text.tag_remove("underline", "sel.first", "sel.last")  
@@ -204,12 +213,11 @@ def size_chooser(s, my_font):
 
 #Export to pdf
 def prt_to_pdf(text, my_font):
+    # Open temp.txt import all text from program and from temp.txt export text to PDf
     with open("temp.txt", "w") as f:
         text_content = text.get(1.0, END)
         f.write(text_content)
-
     pdf = FPDF()  
-    # Add a page
     pdf.add_page()  
     pdf.set_font(my_font.actual("family"), size = my_font.actual("size"))
     
